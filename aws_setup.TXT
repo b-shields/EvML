@@ -3,13 +3,6 @@
 #########################################################
 
 ---------------------------------------------------------
-		        Tutorials
----------------------------------------------------------
-
-https://tm3.ghost.io/2017/12/31/deploying-an-r-shiny-app-to-aws/
-https://towardsdatascience.com/how-to-host-a-r-shiny-app-on-aws-cloud-in-7-simple-steps-5595e7885722
-
----------------------------------------------------------
 			 Install
 ---------------------------------------------------------
 
@@ -20,11 +13,13 @@ https://towardsdatascience.com/how-to-host-a-r-shiny-app-on-aws-cloud-in-7-simpl
 
 2. Edit security groups:
 
+	-------------------------------------------------------------------------
 	Type		Protocol	Port Range	Source
-	
+	-------------------------------------------------------------------------
 	SSH		TCP		22		Anywhere 0.0.0.0/ ::/0		# Remote login
 	HTTP		TCP		80		Anywhere 0.0.0.0/ ::/0		# Use ngix to password protect
 	Custom TCP	TCP		3838		Anywhere 0.0.0.0/ ::/0		# Default R Shiny port
+	-------------------------------------------------------------------------
 
 3. Launch instance
 
