@@ -1,0 +1,114 @@
+#########################################################
+--------------- Reaction Optimization Game --------------
+#########################################################
+
+---------------------------------------------------------
+		        Tutorials
+---------------------------------------------------------
+
+https://tm3.ghost.io/2017/12/31/deploying-an-r-shiny-app-to-aws/
+https://towardsdatascience.com/how-to-host-a-r-shiny-app-on-aws-cloud-in-7-simple-steps-5595e7885722
+
+---------------------------------------------------------
+			 Install
+---------------------------------------------------------
+
+1. Start EC2 Instance:	
+	
+	t2-small
+	ubuntu-xenial-16.04-amd64-server-20190913 (ami-0d03add87774b12c5)
+
+2. Edit security groups:
+
+	Type		Protocol	Port Range	Source
+	
+	SSH		TCP		22		Anywhere 0.0.0.0/ ::/0		# Remote login
+	HTTP		TCP		80		Anywhere 0.0.0.0/ ::/0		# Use ngix to password protect
+	Custom TCP	TCP		3838		Anywhere 0.0.0.0/ ::/0		# Default R Shiny port
+
+3. Launch instance
+
+4. Get into root and run the following commands: 
+
+	sudo -i
+	sudo apt-get update
+	sudo apt-get install r-base
+	sudo apt-get install r-base-dev
+
+5. Install required packages:
+	
+	gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+	gpg -a --export E084DAB9 | sudo apt-key add -	
+	sudo apt-get install gdebi-core
+	wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.12.933-amd64.deb
+	sudo gdebi shiny-server-1.5.12.933-amd64.deb
+	sudo su - -c "R -e \"install.packages(c('shiny', 'dplyr', 'ggplot2', 'reshape2', 'rmarkdown', 'DT'), repos='http://cran.rstudio.com/')\""
+
+6. Edit and save the shiny-server.conf file
+
+	cd /etc/shiny-server
+
+	vi shiny-server.conf
+
+		# Instruct Shiny Server to run applications as the user "shiny"
+		run_as shiny;
+
+		# Define a server that listens on port 3838
+		server {
+  		  listen 3838 0.0.0.0;  ########## Change ##########
+
+		  # Define a location at the base URL
+  		  location /game_app {
+
+    		  # Host the directory of Shiny Apps stored in this directory
+    		  site_dir /srv/shiny-server/game_app;
+
+    		  # Log all Shiny output to files in this directory
+    		  log_dir /var/log/shiny-server;
+
+    		  # When a user visits the base URL rather than a particular application,
+    		  # an index of the applications available in this directory will be shown.
+    		  directory_index on;
+  		  }
+		}
+	
+	esc !wq
+
+7. Add the app dir to /opt/shiny-server folder and create a soft link in the /srv/shiny-server folder
+	
+	SSH>
+
+		chmod 777 /opt/shiny-server
+		chmod 777 /srv/shiny-server
+		cd /opt/shiny-server
+		mkdir app
+	
+	SFTP>
+
+		cd /opt/shiny-server/app
+		put -r path/to/game/on/home/machine
+
+	SSH>
+		cd /srv/shiny-server
+		sudo ln -s /opt/shiny-server/app/arylation_app game_app
+		chmod 777 /opt/shiny-server/app/arylation_app/results
+
+---------------------------------------------------------
+		Useful Shiny Server Commands
+---------------------------------------------------------
+
+Restart the server:
+
+	sudo systemctl restart shiny-server.service
+
+
+
+
+
+
+
+
+
+
+
+
