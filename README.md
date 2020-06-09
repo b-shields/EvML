@@ -14,4 +14,4 @@ Your boss has tasked you with preparing 5-(2-fluorophenyl)-1-methyl-1H-imidazole
 
 <br/><br/><br/><br/>
 
-/^[1] This game was developed by Benjamin Shields of Princeton and Jun Li, Jay Stevens, and Jake Janey of Bristol Myers Squibb.
+<sup>[1]</sup> This game was developed by Benjamin Shields of Princeton and Jun Li, Jay Stevens, and Jake Janey of Bristol Myers Squibb.
