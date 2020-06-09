@@ -1,6 +1,8 @@
 # EvML
 
-Benchmarking experts versus machine learning
+## Expert versus Machine Learning
+
+Benchmarking expert decisions versus machine learning methods
 
 <br/><br/>
 
