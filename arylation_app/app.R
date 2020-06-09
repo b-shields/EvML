@@ -1,17 +1,17 @@
-#The game app is focused on the CH arylation study from recent BMS Princeton PCI collaboration
-#Original game design idea was from Ben Shields and Prof Doyle from Princeton
-#The Shiny App was prepared by Jun Li, Jay Stevens, and Jake Janey from BMS
+# The game app is focused on the CH arylation study from recent BMS Princeton PCI collaboration
+# Original game design idea was from Ben Shields from Princeton
+# The Shiny App was prepared Jun Li, Jay Stevens, and Jake Janey from BMS and Ben Shields
 
-#Here we chose 5-run per batch game scheme
+# Imports
 
 library(shiny)
 library(dplyr)
 library(ggplot2)
 library(reshape2)
 
-#Read data
+# Read data
+
 conditions<-read.csv("All_CH_arylation_Experiments_Jay_12052019.csv", header=TRUE, stringsAsFactors=FALSE,sep = ',')  
-#dim(conditions) 1728 x 6
 
 conditions[,c(1:5)]<-lapply(conditions[,c(1:5)],as.character)
 
@@ -89,14 +89,14 @@ random_table_history = data.frame(base = NULL, ligand = NULL,
 
 ui<-shinyUI(
   navbarPage(
-    "John Henry: Reaction Optimization",
+    "EvML: Reaction Optimization",
     tabPanel("Information",
              fluidPage( withMathJax(includeMarkdown("README.md")))
     ),
     
     tabPanel("Run Experiments",
              sidebarPanel(
-               helpText("Please enter your user name first to initiate the game. Include your research group followed by your initials: eg. DoyleBJS."),
+               helpText("Please enter your user name first to initiate the game."),
                textInput("nname", "Name", value = "", width = NULL, placeholder="Enter name here to begin"),
                selectInput("human","ID",c("Faculty","Graduate Student","Postdoc","Med Chemist","Process Chemist","Engineer","Statistician","Other")),
                selectInput("type","Type",c("Academic", "Pharma","Biotech","CRO or CMO","Other")),
@@ -155,7 +155,7 @@ ui<-shinyUI(
              mainPanel(
                mainPanel(
                  DT::dataTableOutput("leader_board", width = 1000), tags$hr(),
-                 helpText("Above are the results from other users by percentile. There are no live results here. Note: the server is a little slow to update so don't worry if your results don't show up right away."),
+                 helpText("Above are the results from other users by percentile. There are no live results here."),
                  plotOutput("plot3")
                )
              )

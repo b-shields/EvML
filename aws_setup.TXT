@@ -77,6 +77,7 @@
 		chmod 777 /srv/shiny-server
 		cd /opt/shiny-server
 		mkdir app
+		chmod 777 /opt/shiny-server/app
 	
 	SFTP>
 
@@ -87,6 +88,10 @@
 		cd /srv/shiny-server
 		sudo ln -s /opt/shiny-server/app/arylation_app game_app
 		chmod 777 /opt/shiny-server/app/arylation_app/results
+
+8. Access the server via the IpV4 Public IP
+
+	http:<Ipv4 Public IP>:3838/game_app/
 
 ---------------------------------------------------------
 		Useful Shiny Server Commands
