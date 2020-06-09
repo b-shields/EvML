@@ -1,10 +1,6 @@
-# John Henry
+# ManVsML
 
 <br/><br/>
-
-## Preface
-
-Since the dawn of the industrial revolution, experts and skilled workers have battled machines for superiority in their trade. In the age of Manifest Destiny, westward expansion of the transcontinental railroad was driven by both workers and steam powered machines. In this arena, legend has it that the steel worker **John Henrys** prowess as a steel-driver enabled him to triumph over a steam powered drill. The stage of today’s competition is chemical reaction optimization and the competitors are human chemists and automated machine learning systems. Here instead of driving railroad spikes, both the experts and the machine are tasked with making decisions about which experiments to run in order to rapidly optimize the yield of a chemical reaction. It’s a race to the top. Do you have what it takes to beat machine learning?
 
 ## Background
 
@@ -18,4 +14,4 @@ Your boss has tasked you with preparing 5-(2-fluorophenyl)-1-methyl-1H-imidazole
 
 <br/><br/><br/><br/>
 
-^[1] This game was developed by Benjamin Shields of Princeton and Jun Li, Jay Stevens, and Jake Janey of Bristol Myers Squibb.
+/^[1] This game was developed by Benjamin Shields of Princeton and Jun Li, Jay Stevens, and Jake Janey of Bristol Myers Squibb.
