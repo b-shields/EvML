@@ -1,8 +1,10 @@
-# ManVsML
+# EvML
+
+Benchmarking experts versus machine learning
 
 <br/><br/>
 
-## Background
+## Reaction optimization game
 
 The aim of the reaction optimization game is to probe the decisions made by automated machine learning systems and chemists of different backgrounds and levels of experience (e.g. process chemists, med chemists, graduate students, chemistry faculty). In the game, chemists are armed with only their personal knowledge and data they gain by running experiments. By comparison the machine learning alorithms have no knowledge prior to running experiments. ***While the game is intended to simulate reaction optimization on a fixed experimental budget, the data is real.*** Each experiment you "run" will return the result of the corresponding experiment in the lab! Before playing please carefully read the rules below.
 
